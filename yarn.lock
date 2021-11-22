@@ -583,9 +583,9 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
 
-"@babel/plugin-transform-classes@^7.12.1", "@babel/plugin-transform-classes@^7.12.13":
+"@babel/plugin-transform-s@^7.12.1", "@babel/plugin-transform-s@^7.12.13":
   version "7.12.13"
-  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-classes/-/plugin-transform-classes-7.12.13.tgz#9728edc1838b5d62fc93ad830bd523b1fcb0e1f6"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-s/-/plugin-transform-s-7.12.13.tgz#9728edc1838b5d62fc93ad830bd523b1fcb0e1f6"
   integrity sha512-cqZlMlhCC1rVnxE5ZGMtIb896ijL90xppMiuWXcwcOAuFczynpd3KYemb91XFFPi3wJSe/OcrX9lXoowatkkxA==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.12.13"
@@ -928,7 +928,7 @@
     "@babel/plugin-transform-async-to-generator" "^7.12.1"
     "@babel/plugin-transform-block-scoped-functions" "^7.12.1"
     "@babel/plugin-transform-block-scoping" "^7.12.1"
-    "@babel/plugin-transform-classes" "^7.12.1"
+    "@babel/plugin-transform-s" "^7.12.1"
     "@babel/plugin-transform-computed-properties" "^7.12.1"
     "@babel/plugin-transform-destructuring" "^7.12.1"
     "@babel/plugin-transform-dotall-regex" "^7.12.1"
@@ -1000,7 +1000,7 @@
     "@babel/plugin-transform-async-to-generator" "^7.12.13"
     "@babel/plugin-transform-block-scoped-functions" "^7.12.13"
     "@babel/plugin-transform-block-scoping" "^7.12.13"
-    "@babel/plugin-transform-classes" "^7.12.13"
+    "@babel/plugin-transform-s" "^7.12.13"
     "@babel/plugin-transform-computed-properties" "^7.12.13"
     "@babel/plugin-transform-destructuring" "^7.12.13"
     "@babel/plugin-transform-dotall-regex" "^7.12.13"
@@ -4744,7 +4744,7 @@ expand-brackets@^2.1.4:
     debug "^2.3.3"
     define-property "^0.2.5"
     extend-shallow "^2.0.1"
-    posix-character-classes "^0.1.0"
+    posix-character-s "^0.1.0"
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
@@ -8034,9 +8034,9 @@ portfinder@^1.0.26:
     debug "^3.1.1"
     mkdirp "^0.5.5"
 
-posix-character-classes@^0.1.0:
+posix-character-s@^0.1.0:
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
+  resolved "https://registry.yarnpkg.com/posix-character-s/-/posix-character-s-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
   integrity sha1-AerA/jta9xoqbAL+q7jB/vfgDqs=
 
 postcss-attribute-case-insensitive@^4.0.1:
