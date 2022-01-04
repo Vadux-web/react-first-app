@@ -1,0 +1,29 @@
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a.activeLink {
+    color: goldenrod;
+}
+
+.friends_avatars_block {
+    display: flex;
+    flex-direction: row;
+}
+
+.friends_avatar {
+    margin-right: 10px;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: goldenrod;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.header {
+    margin: 0 0 10px;
+}

@@ -16,20 +16,28 @@ let state = {
   },
 
   dialogsPage: {
+    dialogs: [
+      { id: 1, name: "Локус", src: "/src/images/avatars/lokus.jpg" },
+      { id: 2, name: "Бронти", src: "../images/avatars/bronti.jpeg" },
+      { id: 3, name: "Ромашка", src: "../images/avatars/rom.jpeg" },
+      { id: 4, name: "Василек", src: "../images/avatars/vas.jpeg" },
+      { id: 5, name: "Курочка", src: "../images/avatars/coco.jpeg" },
+      { id: 6, name: "Бильбо1000", src: "../images/avatars/b1000.jpeg" },
+    ],
     messages: [
       { id: 1, message: "Hi" },
       { id: 2, message: "Hi are you?" },
       { id: 3, message: "I'm ok!" },
-      { id: 4, message: "how much?" },
-      { id: 5, message: "Salam brat" },
+      { id: 4, message: "how?" },
+      { id: 5, message: "Ok" },
     ],
-    dialogs: [
-      { id: 1, name: "Lokus" },
-      { id: 2, name: "Chpokus" },
-      { id: 3, name: "Bratan" },
-      { id: 4, name: "Baran" },
-      { id: 5, name: "Valera" },
-      { id: 6, name: "Galera" },
+  },
+
+  friendsPage: {
+    friends: [
+      { id: 1, name: "Локус" },
+      { id: 2, name: "Бронти" },
+      { id: 3, name: "Ромашка" },
     ],
   },
 };
