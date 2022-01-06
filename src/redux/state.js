@@ -34,6 +34,7 @@ let state = {
       { id: 4, message: "how?" },
       { id: 5, message: "Ok" },
     ],
+    newMessageText: "New Message Text",
   },
 
   friendsPage: {
@@ -51,15 +52,28 @@ export let addPost = () => {
     message: state.profilePage.newPostText,
     likesCount: 0,
   };
-
   state.profilePage.posts.push(newPost);
   state.profilePage.newPostText = "";
-
   rerenderEntireTree(state);
 };
 
 export let updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
+
+export let addMessage = () => {
+  let newMessage = {
+    id: 6,
+    message: state.dialogsPage.newMessageText,
+  };
+  state.dialogsPage.messages.push(newMessage);
+  state.dialogsPage.newMessageText = "";
+  rerenderEntireTree(state);
+};
+
+export let updateNewMessageText = (newText) => {
+  state.dialogsPage.newMessageText = newText;
   rerenderEntireTree(state);
 };
 

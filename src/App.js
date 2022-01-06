@@ -9,7 +9,6 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 import { BrowserRouter, Route } from "react-router-dom";
-import { updateNewPostText } from "./redux/state";
 
 const App = (props) => {
   return (
@@ -20,7 +19,13 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Route
             path="/dialogs"
-            render={() => <Dialogs state={props.state.dialogsPage} />}
+            render={() => (
+              <Dialogs
+                dialogsPage={props.state.dialogsPage}
+                addMessage={props.addMessage}
+                updateNewMessageText={props.updateNewMessageText}
+              />
+            )}
           />
           <Route
             path="/profile"

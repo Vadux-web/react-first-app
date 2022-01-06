@@ -27,6 +27,7 @@ const MyPosts = (props) => {
             onChange={onPostChange}
             ref={newPostElement}
             value={props.newPostText}
+            placeholder={"...post"}
           />
         </div>
         <div>
