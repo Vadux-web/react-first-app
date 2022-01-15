@@ -1,3 +1,5 @@
+import { actions } from "./constans";
+
 let store = {
   _state: {
     profilePage: {
@@ -58,24 +60,8 @@ let store = {
     //наблюдатель, observer (паттерн addEventListener)
   },
 
-  // логика обновления набираемого текста сообщения
-  updateNewMessageText(newText) {
-    this._state.dialogsPage.newMessageText = newText;
-    this._callSubscriber(this._state);
-  },
-  addMessage() {
-    let newMessage = {
-      id: 6,
-      message: this._state.dialogsPage.newMessageText,
-    };
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessageText = "";
-    this._callSubscriber(this._state);
-  },
-
   dispatch(action) {
-    // { type: 'ADD-POST'}
-    if (action.type === "ADD-POST") {
+    if (action.type === actions.addPost) {
       let newPost = {
         id: 5,
         message: this._state.profilePage.newPostText,
@@ -84,8 +70,19 @@ let store = {
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === actions.updateNewPostText) {
       this._state.profilePage.newPostText = action.newText;
+      this._callSubscriber(this._state);
+    } else if (action.type === actions.addMessage) {
+      let newMessage = {
+        id: 6,
+        message: this._state.dialogsPage.newMessageText,
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessageText = "";
+      this._callSubscriber(this._state);
+    } else if (action.type === actions.updateNewMessageText) {
+      this._state.dialogsPage.newMessageText = action.newText;
       this._callSubscriber(this._state);
     }
   },
