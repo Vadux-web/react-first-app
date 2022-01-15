@@ -61,7 +61,7 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === actions.addPost) {
+    if (action.type === actions.ADD_POST) {
       let newPost = {
         id: 5,
         message: this._state.profilePage.newPostText,
@@ -70,10 +70,10 @@ let store = {
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === actions.updateNewPostText) {
+    } else if (action.type === actions.UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
-    } else if (action.type === actions.addMessage) {
+    } else if (action.type === actions.ADD_MESSAGE) {
       let newMessage = {
         id: 6,
         message: this._state.dialogsPage.newMessageText,
@@ -81,12 +81,24 @@ let store = {
       this._state.dialogsPage.messages.push(newMessage);
       this._state.dialogsPage.newMessageText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === actions.updateNewMessageText) {
+    } else if (action.type === actions.UPDATE_NEW_MESSAGE_TEXT) {
       this._state.dialogsPage.newMessageText = action.newText;
       this._callSubscriber(this._state);
     }
   },
 };
+
+export const addPostActionCreator = () => ({ type: actions.ADD_POST });
+export const updateNewPostTextActionCreator = (text) => ({
+  type: actions.UPDATE_NEW_POST_TEXT,
+  newText: text,
+});
+
+export const addMessageActionCreator = () => ({ type: actions.ADD_MESSAGE });
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: actions.UPDATE_NEW_MESSAGE_TEXT,
+  newText: text,
+});
 
 export default store;
 window.store = store;

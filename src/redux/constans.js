@@ -1,6 +1,6 @@
 export const actions = {
-  addPost: "ADD-POST",
-  updateNewPostText: "UPDATE-NEW-POST-TEXT",
-  addMessage: "ADD-MESSAGE",
-  updateNewMessageText: "UPDATE-NEW-MESSAGE-TEXT",
+  ADD_POST: "ADD-POST",
+  UPDATE_NEW_POST_TEXT: "UPDATE-NEW-POST-TEXT",
+  ADD_MESSAGE: "ADD-MESSAGE",
+  UPDATE_NEW_MESSAGE_TEXT: "UPDATE-NEW-MESSAGE-TEXT",
 };
