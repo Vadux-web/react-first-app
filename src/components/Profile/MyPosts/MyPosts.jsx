@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import { actions } from "../../../redux/constans";
 
 const MyPosts = (props) => {
   const postsElements = props.posts.map((p) => {
@@ -10,8 +11,7 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    // было - props.addPost();
-    props.dispatch({ type: "ADD-POST" });
+    props.dispatch({ type: actions.addPost });
   };
 
   let onPostChange = () => {
