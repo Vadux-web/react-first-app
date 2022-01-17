@@ -1,4 +1,6 @@
 import { actions } from "./constans";
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
 
 let store = {
   _state: {
@@ -18,7 +20,6 @@ let store = {
       ],
       newPostText: "New Post Text",
     },
-
     dialogsPage: {
       dialogs: [
         { id: 1, name: "Локус", src: "/src/images/avatars/lokus.jpg" },
@@ -61,44 +62,11 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === actions.ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likesCount: 0,
-      };
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this._callSubscriber(this._state);
-    } else if (action.type === actions.UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === actions.UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.body;
-      this._callSubscriber(this._state);
-    } else if (action.type === actions.SEND_MESSAGE) {
-      let newMessage = {
-        id: 6,
-        message: this._state.dialogsPage.newMessageBody,
-      };
-      this._state.dialogsPage.messages.push(newMessage);
-      this._state.dialogsPage.newMessageText = "";
-      this._callSubscriber(this._state);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._callSubscriber(this._state);
   },
 };
-
-export const addPostActionCreator = () => ({ type: actions.ADD_POST });
-export const updateNewPostTextActionCreator = (text) => ({
-  type: actions.UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-
-export const sendMessageCreator = () => ({ type: actions.SEND_MESSAGE });
-export const updateNewMessageBodyCreator = (body) => ({
-  type: actions.UPDATE_NEW_MESSAGE_BODY,
-  body: body,
-});
 
 export default store;
 window.store = store;

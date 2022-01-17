@@ -2,24 +2,41 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from "../../../redux/state";
+  addPostCreator,
+  dislikeCreator,
+  likeCreator,
+  updateNewPostTextCreator,
+} from "../../../redux/profile-reducer";
 
 const MyPosts = (props) => {
   const postsElements = props.posts.map((p) => {
-    return <Post message={p.message} likesCount={p.likesCount} />;
+    const handleLike = () => {
+      props.dispatch(likeCreator(p.id));
+    };
+    const handleDislike = () => {
+      props.dispatch(dislikeCreator(p.id));
+    };
+    return (
+      <Post
+        liked={p.liked}
+        disliked={p.disliked}
+        onLike={handleLike}
+        onDislike={handleDislike}
+        message={p.message}
+        likesCount={p.likesCount}
+      />
+    );
   });
 
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    props.dispatch(addPostCreator());
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.dispatch(updateNewPostTextActionCreator(text));
+    props.dispatch(updateNewPostTextCreator(text));
   };
 
   return (
