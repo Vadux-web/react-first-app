@@ -33,7 +33,8 @@ const Navbar = (props) => {
       </div>
 
       <div className={s.friends}>
-        <Friends state={props.state.friendsPage} />
+        <Friends />
+        {/*<Friends state={props.state.friendsPage} />*/}
       </div>
     </nav>
   );

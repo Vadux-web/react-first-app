@@ -1,6 +1,23 @@
 import { actions } from "./constans";
 
-const profileReducer = (state, action) => {
+let initialState = {
+  posts: [
+    {
+      id: 1,
+      message:
+        "Афера космического ботаника: Как Илон Маск украл у России многоразовую ракету",
+      likesCount: 15,
+    },
+    {
+      id: 2,
+      message: "Готовиться всем: тревожная новость от Мишустина",
+      likesCount: 20,
+    },
+  ],
+  newPostText: "New Post Text",
+};
+
+const profileReducer = (state = initialState, action) => {
   const postId = action.postId;
   const currentPost = state.posts.find((post) => {
     return postId === post.id;
