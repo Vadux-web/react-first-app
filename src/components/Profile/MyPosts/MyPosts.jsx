@@ -3,7 +3,6 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {
   addPostCreator,
-  dislikeCreator,
   likeCreator,
   updateNewPostTextCreator,
 } from "../../../redux/profile-reducer";
@@ -13,15 +12,12 @@ const MyPosts = (props) => {
     const handleLike = () => {
       props.dispatch(likeCreator(p.id));
     };
-    const handleDislike = () => {
-      props.dispatch(dislikeCreator(p.id));
-    };
+
     return (
       <Post
         liked={p.liked}
         disliked={p.disliked}
         onLike={handleLike}
-        onDislike={handleDislike}
         message={p.message}
         likesCount={p.likesCount}
       />

@@ -18,11 +18,6 @@ let initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
-  const postId = action.postId;
-  const currentPost = state.posts.find((post) => {
-    return postId === post.id;
-  });
-
   switch (action.type) {
     case actions.ADD_POST:
       let newPost = {
@@ -37,18 +32,16 @@ const profileReducer = (state = initialState, action) => {
       state.newPostText = action.newText;
       return state;
 
-    case actions.LIKE_POST:
+    case actions.TOGGLE_LIKE_POST:
+      const postId = action.postId;
+      const currentPost = state.posts.find((post) => {
+        return postId === post.id;
+      });
       if (currentPost) {
-        currentPost.likesCount = currentPost.likesCount + 1;
-        currentPost.liked = true;
-        currentPost.disliked = false;
-      }
-      return state;
-    case actions.DISLIKE_POST:
-      if (currentPost) {
-        currentPost.likesCount = currentPost.likesCount - 1;
-        currentPost.disliked = true;
-        currentPost.liked = false;
+        currentPost.likesCount = currentPost.liked
+          ? currentPost.likesCount - 1
+          : currentPost.likesCount + 1;
+        currentPost.liked = !currentPost.liked;
       }
       return state;
 
@@ -63,11 +56,7 @@ export const updateNewPostTextCreator = (text) => ({
   newText: text,
 });
 export const likeCreator = (postId) => ({
-  type: actions.LIKE_POST,
-  postId: postId,
-});
-export const dislikeCreator = (postId) => ({
-  type: actions.DISLIKE_POST,
+  type: actions.TOGGLE_LIKE_POST,
   postId: postId,
 });
 
