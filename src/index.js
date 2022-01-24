@@ -6,13 +6,16 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "./StoreContext";
+import { LangProvider } from "./LangContext";
 
 let rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <LangProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </LangProvider>
     </BrowserRouter>,
     document.getElementById("root")
   );
