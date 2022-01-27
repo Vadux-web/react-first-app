@@ -8,7 +8,10 @@ const Header = () => {
       {(lang) => {
         return (
           <header className={s.header}>
-            <img src="https://www.vippng.com/png/full/410-4100150_livechat-logo-png-live-chat.png" />
+            <img
+              alt="logo"
+              src="https://www.vippng.com/png/full/410-4100150_livechat-logo-png-live-chat.png"
+            />
             <p>{lang}</p>
           </header>
         );
