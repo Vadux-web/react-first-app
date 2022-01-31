@@ -42,13 +42,18 @@ const profileReducer = (state = initialState, action) => {
       const currentPost = state.posts.find((post) => {
         return postId === post.id;
       });
+
       if (currentPost) {
         currentPost.likesCount = currentPost.liked
           ? currentPost.likesCount - 1
           : currentPost.likesCount + 1;
         currentPost.liked = !currentPost.liked;
       }
-      return state;
+
+      return {
+        ...state,
+        posts: [...state.posts],
+      };
 
     default:
       return state;
