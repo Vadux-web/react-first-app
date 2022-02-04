@@ -1,11 +1,11 @@
 import React from "react";
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
   return (
     <div>
-      <ProfileInfo />
+      <ProfileInfoContainer />
       <div>ProfileInfo сверху. MyPosts снизу</div>
       <MyPostsContainer />
     </div>

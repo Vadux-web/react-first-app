@@ -15,6 +15,7 @@ const MyPosts = (props) => {
         onLike={handleLike}
         message={p.message}
         likesCount={p.likesCount}
+        key={p.id}
       />
     );
   });
