@@ -26,7 +26,7 @@ const ProfileInfo = (props) => {
           alt="panoramic"
         />
       </div>
-      <div className={s.descriptionBlock}>Name</div>
+      <div className={s.descriptionBlock}>{props.currentUser.firstName}</div>
 
       <div>
         <input

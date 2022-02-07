@@ -5,6 +5,7 @@ import userPhoto from "../../assets/images/avatars/vadik.jpg";
 
 class Users extends React.Component {
   componentDidMount() {
+    console.log("Hello 1");
     axios
       .get("https://social-network.samuraijs.com/api/1.0/users")
       .then((response) => {
@@ -13,6 +14,7 @@ class Users extends React.Component {
   }
 
   render() {
+    console.log("Hello 2");
     return (
       <div>
         {this.props.users.map((u) => (
