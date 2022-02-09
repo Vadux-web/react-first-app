@@ -1,10 +1,6 @@
 import { actions } from "./constans";
 
 let initialState = {
-  currentUser: {
-    firstName: "Vadim",
-    lastName: "Lunev",
-  },
   posts: [
     {
       id: 1,
@@ -19,6 +15,7 @@ let initialState = {
     },
   ],
   newPostText: "New Post Text",
+  profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -59,56 +56,18 @@ const profileReducer = (state = initialState, action) => {
         posts: [...state.posts],
       };
 
-    case actions.UPDATE_CURRENT_USER_FIRSTNAME: {
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          firstName: action.firstName,
-        },
-      };
-    }
-
-    case actions.UPDATE_CURRENT_USER_LASTNAME: {
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          lastName: action.lastName,
-        },
-      };
-    }
-
-    // case actions.CHANGE_NAME_BUTTON: {
-    //   return {
-    //     ...state,
-    //     newNameBody: "",
-    //     currentUser: {
-    //       ...state.currentUser,
-    //       firstName: action.firstName,
-    //     },
-    //   };
-    // }
+    case actions.SET_USER_PROFILE:
+      return { ...state, profile: action.profile };
 
     default:
       return state;
   }
 };
-export const updateCurrentUserFirstNameCreator = (name) => ({
-  type: actions.UPDATE_CURRENT_USER_FIRSTNAME,
-  firstName: name,
-});
-
-export const updateCurrentUserLastNameCreator = (lastName) => ({
-  type: actions.UPDATE_CURRENT_USER_LASTNAME,
-  lastName: lastName,
-});
-
-// export const changeNameButtonCreator = () => ({
-//   type: actions.CHANGE_NAME_BUTTON,
-// });
-
 export const addPostCreator = () => ({ type: actions.ADD_POST });
+export const setUserProfile = (profile) => ({
+  type: actions.SET_USER_PROFILE,
+  profile,
+});
 export const updateNewPostTextCreator = (text) => ({
   type: actions.UPDATE_NEW_POST_TEXT,
   newText: text,

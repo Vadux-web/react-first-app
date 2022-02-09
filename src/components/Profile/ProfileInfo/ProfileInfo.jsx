@@ -1,22 +1,10 @@
 import React from "react";
-import s from "./ProfileInfo.module.css";
+import Preloader from "../../common/Preloader/Preloader";
 
 const ProfileInfo = (props) => {
-  let onNameChange = (e) => {
-    props.onFirstNameChange(e.target.value);
-  };
-
-  let newLastNameElement = React.createRef();
-
-  let onLastNameChange = () => {
-    let lastName = newLastNameElement.current.value;
-    props.onLastNameChange(lastName);
-  };
-
-  // let onChangeNameButton = () => {
-  //   props.changeNameButton();
-  // };
-
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <div>
       <div>
@@ -26,23 +14,10 @@ const ProfileInfo = (props) => {
           alt="panoramic"
         />
       </div>
-      <div className={s.descriptionBlock}>{props.currentUser.firstName}</div>
-
       <div>
-        <input
-          type="text"
-          onChange={onNameChange}
-          value={props.currentUser.firstName}
-          placeholder={"имя"}
-        />
-        <input
-          type="text"
-          onChange={onLastNameChange}
-          ref={newLastNameElement}
-          value={props.currentUser.lastName}
-          placeholder={"фамилия"}
-        />
-        {<button /*onClick={onChangeNameButton}*/>Change name</button>}
+        {" "}
+        <img src={props.profile.photos.large} alt={"avatar"} /> ava +
+        description{" "}
       </div>
     </div>
   );
