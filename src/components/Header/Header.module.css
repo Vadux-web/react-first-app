@@ -1,12 +1,18 @@
 .header {
-    display: flex;
     grid-area: h;
     background-color: darkslateblue;
 }
+
 .header img {
     height: 90%;
     align-self: center;
     margin-left: 5px;
 }
 
+.loginBlock {
+    float: right;
+}
 
+.loginBlock a {
+    color: white;
+}
