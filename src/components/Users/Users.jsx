@@ -15,21 +15,26 @@ let Users = (props) => {
   return (
     <div>
       <div className={styles.pagesList}>
-        {pages.map((p) => {
-          return (
-            <span
-              key={p}
-              className={
-                props.currentPage === p ? styles.selectedPage : undefined
-              }
-              onClick={(e) => {
-                props.onPageChanged(p);
-              }}
-            >
-              {` ${p} `}
-            </span>
-          );
-        })}
+        {pages
+          .map((p) => {
+            return (
+              <span
+                key={p}
+                className={
+                  props.currentPage === p ? styles.selectedPage : undefined
+                }
+                onClick={(e) => {
+                  props.onPageChanged(p);
+                }}
+              >
+                {` ${p} `}
+              </span>
+            );
+          })
+          .slice(
+            props.currentPage - 5 < 0 ? 0 : props.currentPage - 5,
+            props.currentPage + 4
+          )}
       </div>
       {props.users.map((u) => (
         <div key={u.id}>
