@@ -6,6 +6,7 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,
+  followingInProgress: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -14,7 +15,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.id === action.userID) {
+          if (user.id === action.userId) {
             return { ...user, followed: true };
           }
           return user;
@@ -24,7 +25,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.id === action.userID) {
+          if (user.id === action.userId) {
             return { ...user, followed: false };
           }
           return user;
@@ -54,15 +55,23 @@ const usersReducer = (state = initialState, action) => {
         isFetching: action.isFetching,
       };
     }
+    case actions.TOGGLE_IS_FOLLOWING_PROGRESS: {
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userId]
+          : state.followingInProgress.filter((id) => id !== action.userId),
+      };
+    }
     default:
       return state;
   }
 };
 
-export const follow = (userID) => ({ type: actions.FOLLOW, userID });
-export const unfollow = (userID) => ({
+export const follow = (userId) => ({ type: actions.FOLLOW, userId });
+export const unfollow = (userId) => ({
   type: actions.UNFOLLOW,
-  userID,
+  userId,
 });
 export const setUsers = (users) => ({ type: actions.SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({
@@ -76,6 +85,11 @@ export const setTotalUsersCount = (totalUsersCount) => ({
 export const toggleIsFetching = (isFetching) => ({
   type: actions.TOGGLE_IS_FETCHING,
   isFetching,
+});
+export const toggleFollowingProgress = (isFetching, userId) => ({
+  type: actions.TOGGLE_IS_FOLLOWING_PROGRESS,
+  isFetching,
+  userId,
 });
 
 export default usersReducer;
