@@ -1,4 +1,5 @@
 import { actions } from "./constans";
+import { usersAPI } from "../api/api";
 
 let initialState = {
   posts: [
@@ -68,6 +69,13 @@ export const setUserProfile = (profile) => ({
   type: actions.SET_USER_PROFILE,
   profile,
 });
+
+export const getUserProfile = (userId) => (dispatch) => {
+  usersAPI.getProfile(userId).then((response) => {
+    dispatch(setUserProfile(response.data));
+  });
+};
+
 export const updateNewPostTextCreator = (text) => ({
   type: actions.UPDATE_NEW_POST_TEXT,
   newText: text,
