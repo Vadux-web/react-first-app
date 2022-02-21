@@ -1,5 +1,5 @@
 import { actions } from "./constans";
-import { usersAPI } from "../api/api";
+import { profileAPI, usersAPI } from "../api/api";
 
 let initialState = {
   posts: [
@@ -17,6 +17,7 @@ let initialState = {
   ],
   newPostText: "New Post Text",
   profile: null,
+  status: "",
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -39,6 +40,14 @@ const profileReducer = (state = initialState, action) => {
         newPostText: action.newText,
       };
     }
+
+    case actions.SET_STATUS: {
+      return {
+        ...state,
+        status: action.status,
+      };
+    }
+
     case actions.TOGGLE_LIKE_POST:
       const postId = action.postId;
       const currentPost = state.posts.find((post) => {
@@ -69,11 +78,34 @@ export const setUserProfile = (profile) => ({
   type: actions.SET_USER_PROFILE,
   profile,
 });
+export const setStatus = (status) => ({ type: actions.SET_STATUS, status });
 
 export const getUserProfile = (userId) => (dispatch) => {
   usersAPI.getProfile(userId).then((response) => {
     dispatch(setUserProfile(response.data));
   });
+};
+
+export const getStatus = (userId) => (dispatch) => {
+  profileAPI.getStatus(userId).then((response) => {
+    dispatch(setStatus(response.data));
+  });
+};
+
+export const updateStatus = (status) => (dispatch, getState) => {
+  const currentState = getState();
+  dispatch(setStatus(status));
+  profileAPI
+    .updateStatus(status)
+    .then((response) => {
+      if (response.data.resultCode !== 0) {
+        dispatch(setStatus(currentState.profilePage.status));
+      }
+    })
+    .catch((err) => {
+      dispatch(setStatus(currentState.profilePage.status));
+      console.error("Ошибка при присвоении статуса:", err);
+    });
 };
 
 export const updateNewPostTextCreator = (text) => ({
