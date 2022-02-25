@@ -55,7 +55,7 @@ const AddNewPostForm = (props) => {
         />
       </div>
       <div>
-        <button>Add post</button>
+        <button disabled={!props.valid}>Add post</button>
       </div>
     </form>
   );
