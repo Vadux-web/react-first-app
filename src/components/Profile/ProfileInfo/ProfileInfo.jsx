@@ -3,6 +3,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import userPhoto from "../../../assets/images/avatars/vadik.jpg";
 import styles from "../../Profile/ProfileInfo/ProfileInfo.module.css";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -28,7 +29,7 @@ const ProfileInfo = (props) => {
           }
           alt="ava"
         />
-        <ProfileStatus
+        <ProfileStatusWithHooks
           status={props.status}
           updateStatus={props.updateStatus}
         />
