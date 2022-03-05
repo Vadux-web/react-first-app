@@ -8,8 +8,14 @@ import {
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
 
-const MyPosts = (props) => {
-  const postsElements = props.posts.map((p) => {
+window.props = [];
+
+const MyPosts = React.memo((props) => {
+  console.log("Render");
+  window.props.push(props);
+  console.log(props);
+
+  const postsElements = [...props.posts].reverse().map((p) => {
     const handleLike = () => {
       props.handleLike(p.id);
     };
@@ -39,7 +45,7 @@ const MyPosts = (props) => {
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 
 const maxLength10 = maxLengthCreator(10);
 
