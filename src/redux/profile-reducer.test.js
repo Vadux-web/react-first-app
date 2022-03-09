@@ -4,17 +4,17 @@ let state = {
   posts: [
     {
       id: 1,
-      message: "Crazy Owl 11-12 июня 2022",
+      message: "Готовиться всем: марафонский метод Хансонов",
       likesCount: 15,
     },
     {
       id: 2,
-      message: "Готовиться всем: марафонский метод Хансонов",
+      message: "Crazy Owl 11-12 июня 2022",
       likesCount: 20,
     },
     {
       id: 3,
-      message: "Александр Васильев покинул Россию вслед за модой",
+      message: "GRUT T80",
       likesCount: 24,
     },
     {
