@@ -2,10 +2,16 @@
     width: 150px;
     height: 150px;
     border-radius: 100px;
+
 }
 
 .selectedPage {
     font-weight: bold;
+    border: solid 1px yellow;
+}
+
+.pageNumber {
+    border: solid 1px yellow;
 }
 
 .pagesList {
@@ -15,3 +21,4 @@
     cursor: pointer;
 
 }
+
