@@ -1,0 +1,16 @@
+.selectedPage {
+  font-weight: bold;
+  border: solid 1px yellow;
+}
+
+.pageNumber {
+  border: solid 1px yellow;
+}
+
+.pagesList {
+  width: 900px;
+  overflow-wrap: break-word;
+  text-align: center;
+  cursor: pointer;
+
+}

@@ -1,7 +1,12 @@
-import styles from "../../Users/users.module.css";
+import styles from "../Paginator/Paginator.module.css";
 import React from "react";
 
-let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged }) => {
+let PaginatorD = ({
+  totalItemsCount,
+  pageSize,
+  currentPage,
+  onPageChanged,
+}) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
   let pages = [];
@@ -11,14 +16,6 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged }) => {
 
   return (
     <div className={styles.pagesList}>
-      <button
-        disabled={currentPage < 10}
-        onClick={() => {
-          onPageChanged(currentPage - 9);
-        }}
-      >
-        Prev
-      </button>
       {pages
         .map((p) => {
           return (
@@ -36,16 +33,8 @@ let Paginator = ({ totalItemsCount, pageSize, currentPage, onPageChanged }) => {
           );
         })
         .slice(currentPage - 5 < 0 ? 0 : currentPage - 5, currentPage + 4)}
-      <button
-        disabled={currentPage > totalItemsCount - 2}
-        onClick={() => {
-          onPageChanged(currentPage + 9);
-        }}
-      >
-        Next
-      </button>
     </div>
   );
 };
 
-export default Paginator;
+export default PaginatorD;
