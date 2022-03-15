@@ -9,13 +9,33 @@ const Music = () => {
     fifth: { title: "e", count: 5 },
   });
 
-  Object.keys(counter3).map((el) => {
-    console.log(el); //first
-    console.log(counter3.first.title); //a
-    console.log(counter3.el.title);
-  });
+  const handleClick = (key) => () => {
+    //1. Создать копию объекта
+    const obj = { ...counter3 };
+    // 2. Найти эл-т в объекте
+    const curEl = obj[key];
+    // 3. Изменить значение объекта
+    if (curEl) curEl.count = curEl.count + 1;
+    // 4. Передать объект в стейт
+    setCounter3(obj);
+  };
 
-  return <div>TEXT</div>;
+  return (
+    <div>
+      <div style={{ display: "flex" }}>
+        {Object.keys(counter3).map((key) => {
+          return (
+            <div>
+              <button onClick={handleClick(key)}>
+                Counter {counter3[key].title}
+              </button>
+              <p>{counter3[key].count}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default Music;
