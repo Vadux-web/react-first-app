@@ -23,6 +23,11 @@ const News = () => {
       title: "C3",
       number: 1000,
     },
+    {
+      id: 4,
+      title: "C4",
+      number: 10000,
+    },
   ]);
 
   const handleClick = (id) => () => {
