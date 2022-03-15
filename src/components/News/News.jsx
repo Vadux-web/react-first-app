@@ -25,11 +25,11 @@ const News = () => {
     },
   ]);
 
-  const handleClick = (el) => () => {
+  const handleClick = (id) => () => {
     //1. Создать копию массива
     const arr = [...counter2];
     // 2. Найти объект в массиве
-    const curEl = arr[el - 1];
+    const curEl = arr.find((el) => el.id === id);
     // 3. Изменить значение об.
     curEl.number = curEl.number + 1;
     // 4. Передать массив в стейт
