@@ -11,9 +11,7 @@ import { Textarea } from "../../common/FormsControls/FormsControls";
 window.props = [];
 
 const MyPosts = React.memo((props) => {
-  console.log("Render");
   window.props.push(props);
-  console.log(props);
 
   const postsElements = [...props.posts].reverse().map((p) => {
     const handleLike = () => {
@@ -31,8 +29,6 @@ const MyPosts = React.memo((props) => {
       />
     );
   });
-
-  // let newPostElement = React.createRef();
 
   let onAddPost = (values) => {
     props.addPost(values.newPostText);

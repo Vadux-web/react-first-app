@@ -15,7 +15,13 @@ const Music = () => {
     // 2. Найти эл-т в объекте
     const curEl = obj[key];
     // 3. Изменить значение объекта
-    if (curEl) curEl.count = curEl.count + 1;
+    if (key === "second") curEl.count = Math.floor(Math.random() * 100) + 1;
+    else if (key === "third") {
+      curEl.count = Math.floor(Math.random() * 1000) + 1;
+    } else {
+      curEl.count = curEl.count + 1;
+    }
+
     // 4. Передать объект в стейт
     setCounter3(obj);
   };
