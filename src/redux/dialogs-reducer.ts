@@ -15,11 +15,7 @@ let initialState: initialStateType = {
     { id: 3, name: "Ромашка", src: null },
     { id: 4, name: "Василек", src: null },
     { id: 5, name: "Курочка", src: null },
-    {
-      id: 6,
-      name: "Бильбо1000",
-      src: b1000,
-    },
+    { id: 6, name: "Бильбо1000", src: b1000 },
   ],
   messages: [
     { id: 1, message: "Hi" },
