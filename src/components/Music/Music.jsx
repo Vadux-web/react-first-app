@@ -26,13 +26,34 @@ const Music = () => {
     setCounter3(obj);
   };
 
+  function duplicateA(a) {
+    return [...a, ...a];
+  }
+  console.log("duplicateA", duplicateA([1, 2, 3, 4, 5]));
+
+  function duplicateB(b) {
+    return b.concat(b);
+  }
+  console.log("duplicateB", duplicateB([1, 2, 3, 4, 5]));
+
+  function duplicateC(c) {
+    return (c + "," + c).split(",");
+  }
+  console.log("duplicateC", duplicateC([1, 2, 3, 4, 5]));
+
+  let arr = [1, 2, 3, 4, 5];
+  let res = arr.filter(function (el) {
+    return el % 2;
+  });
+  console.log(res);
+
   return (
     <div>
       <div style={{ display: "flex" }}>
         {Object.keys(counter3).map((key) => {
           return (
             <div>
-              <button onClick={handleClick(key)}>
+              <button key={key} onClick={handleClick(key)}>
                 Counter {counter3[key].title}
               </button>
               <p>{counter3[key].count}</p>
