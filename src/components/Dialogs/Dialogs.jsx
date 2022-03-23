@@ -17,8 +17,6 @@ const Dialogs = (props) => {
     <Message message={m.message} key={m.id} id={m.id} />
   ));
 
-  // let newMessageBody = state.newMessageBody;
-
   let addNewMessage = (values) => {
     props.sendMessage(values.newMessageBody);
   };
