@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
@@ -22,11 +22,11 @@ import { LangProvider } from "./LangContext";
 import store from "./redux/redux-store";
 import { withSuspense } from "./hoc/withSuspense";
 
-const DialogsContainer = React.lazy(() =>
-  import("./components/Dialogs/DialogsContainer")
+const DialogsContainer = React.lazy(
+  () => import("./components/Dialogs/DialogsContainer")
 );
-const ProfileContainer = React.lazy(() =>
-  import("./components/Profile/ProfileContainer")
+const ProfileContainer = React.lazy(
+  () => import("./components/Profile/ProfileContainer")
 );
 
 class App extends React.Component {
@@ -36,6 +36,7 @@ class App extends React.Component {
   // };
 
   componentDidMount() {
+    // @ts-ignore
     this.props.initializeApp();
     // window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
@@ -48,11 +49,14 @@ class App extends React.Component {
   // }
 
   render() {
+    // @ts-ignore
     if (!this.props.initialized) {
       return <Preloader />;
     }
+    // @ts-ignore
     return (
       <div className="app-wrapper">
+        {/*// @ts-ignore*/}
         <HeaderContainer />
         <Navbar />
 
@@ -64,6 +68,7 @@ class App extends React.Component {
               path="/profile/:userId?"
               render={withSuspense(ProfileContainer)}
             />
+            {/*// @ts-ignore*/}
             <Route path="/users" render={() => <UsersContainer />} />
             <Route path="/login" render={() => <LoginPage />} />
             <Route path="/news" component={News} />
@@ -90,6 +95,7 @@ const SamuraiJSApp = (props) => {
     <HashRouter>
       <LangProvider>
         <Provider store={store}>
+          {/*// @ts-ignore*/}
           <AppContainer />
         </Provider>
       </LangProvider>
