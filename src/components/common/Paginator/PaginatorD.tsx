@@ -1,8 +1,17 @@
+// @ts-ignore
 import styles from "../Paginator/PaginatorD.module.css";
 import React, { useState } from "react";
 import cn from "classnames";
 
-let PaginatorD = ({
+type PropsType = {
+  totalItemsCount: number;
+  pageSize: number;
+  currentPage: number;
+  onPageChanged: (pageNumber: number) => void;
+  portionSize?: number;
+};
+
+let PaginatorD: React.FC<PropsType> = ({
   totalItemsCount,
   pageSize,
   currentPage,
@@ -11,7 +20,7 @@ let PaginatorD = ({
 }) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
 
-  let pages = [];
+  let pages: Array<number> = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
