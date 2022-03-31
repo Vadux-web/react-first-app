@@ -1,7 +1,13 @@
-import { actions } from "./constans";
 import { profileAPI, usersAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 import { PhotosType, PostType, ProfileType } from "../types/types";
+
+const ADD_POST = "ADD-POST";
+const SET_STATUS = "SET-STATUS";
+const TOGGLE_LIKE_POST = "TOGGLE-LIKE-POST";
+const SET_USER_PROFILE = "SET-USER-PROFILE";
+const DELETE_POST = "DELETE-POST";
+const SAVE_PHOTO_SUCCESS = "SAVE-PHOTO-SUCCESS";
 
 type InitialStateType = {
   posts: Array<PostType>;
@@ -44,10 +50,10 @@ let initialState: InitialStateType = {
 
 const profileReducer = (
   state = initialState,
-  action: any
+  action: ActionsType
 ): InitialStateType => {
   switch (action.type) {
-    case actions.ADD_POST: {
+    case ADD_POST: {
       let newPost = {
         id: 5,
         message: action.newPostText,
@@ -61,14 +67,14 @@ const profileReducer = (
       };
     }
 
-    case actions.SET_STATUS: {
+    case SET_STATUS: {
       return {
         ...state,
         status: action.status,
       };
     }
 
-    case actions.TOGGLE_LIKE_POST:
+    case TOGGLE_LIKE_POST:
       const postId = action.postId;
       const currentPost = state.posts.find((post) => {
         return postId === post.id;
@@ -86,16 +92,16 @@ const profileReducer = (
         posts: [...state.posts],
       };
 
-    case actions.SET_USER_PROFILE:
+    case SET_USER_PROFILE:
       return { ...state, profile: action.profile };
 
-    case actions.DELETE_POST:
+    case DELETE_POST:
       return {
         ...state,
         posts: state.posts.filter((p) => p.id !== action.postId),
       };
 
-    case actions.SAVE_PHOTO_SUCCESS:
+    case SAVE_PHOTO_SUCCESS:
       return {
         ...state,
         profile: { ...state.profile, photos: action.photos },
@@ -106,51 +112,68 @@ const profileReducer = (
   }
 };
 
+type ActionsType =
+  | AddPostCreatorType
+  | SetUserProfileActionType
+  | SetStatusActionType
+  | DeletePostActionType
+  | SavePhotoSuccessActionType
+  | LikeCreatorActionType;
+
 type AddPostCreatorType = {
-  type: typeof actions.ADD_POST;
+  type: typeof ADD_POST;
   newPostText: string;
 };
 export const addPostCreator = (newPostText: string): AddPostCreatorType => ({
-  type: actions.ADD_POST,
+  type: ADD_POST,
   newPostText,
 });
 
 type SetUserProfileActionType = {
-  type: typeof actions.SET_USER_PROFILE;
+  type: typeof SET_USER_PROFILE;
   profile: ProfileType;
 };
 export const setUserProfile = (
   profile: ProfileType
 ): SetUserProfileActionType => ({
-  type: actions.SET_USER_PROFILE,
+  type: SET_USER_PROFILE,
   profile,
 });
 
 type SetStatusActionType = {
-  type: typeof actions.SET_STATUS;
+  type: typeof SET_STATUS;
   status: string;
 };
 export const setStatus = (status: string): SetStatusActionType => ({
-  type: actions.SET_STATUS,
+  type: SET_STATUS,
   status,
 });
 
 type DeletePostActionType = {
-  type: typeof actions.DELETE_POST;
+  type: typeof DELETE_POST;
   postId: number;
 };
 export const deletePost = (postId: number): DeletePostActionType => ({
-  type: actions.DELETE_POST,
+  type: DELETE_POST,
   postId,
 });
 
 type SavePhotoSuccessActionType = {
-  type: typeof actions.SAVE_PHOTO_SUCCESS;
+  type: typeof SAVE_PHOTO_SUCCESS;
   photos: PhotosType;
 };
 export const savePhotoSuccess = (photos): SavePhotoSuccessActionType => ({
-  type: actions.SAVE_PHOTO_SUCCESS,
+  type: SAVE_PHOTO_SUCCESS,
   photos,
+});
+
+type LikeCreatorActionType = {
+  type: typeof TOGGLE_LIKE_POST;
+  postId: number;
+};
+export const likeCreator = (postId) => ({
+  type: TOGGLE_LIKE_POST,
+  postId: postId,
 });
 
 export const getUserProfile = (userId: number) => async (dispatch: any) => {
@@ -193,10 +216,5 @@ export const saveProfile = (profile: ProfileType) => async (
     return Promise.reject(response.data.messages[0]);
   }
 };
-
-export const likeCreator = (postId) => ({
-  type: actions.TOGGLE_LIKE_POST,
-  postId: postId,
-});
 
 export default profileReducer;

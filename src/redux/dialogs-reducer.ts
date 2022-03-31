@@ -1,7 +1,7 @@
 import { actions } from "./constans";
-// import lokus from "../assets/images/avatars/lokus.jpg";
-// import bronti from "../assets/images/avatars/bronti.jpeg";
-// import b1000 from "../assets/images/avatars/b1000.jpeg";
+import lokus from "../assets/images/avatars/lokus.jpg";
+import bronti from "../assets/images/avatars/bronti.jpeg";
+import b1000 from "../assets/images/avatars/b1000.jpeg";
 
 type DialogType = { id: number; name: string; src: string | null }; //HTMLImageElement
 
@@ -17,12 +17,12 @@ type InitialStateType = {
 
 let initialState: InitialStateType = {
   dialogs: [
-    { id: 1, name: "Локус", src: null },
-    { id: 2, name: "Бронти", src: null },
+    { id: 1, name: "Локус", src: lokus },
+    { id: 2, name: "Бронти", src: bronti },
     { id: 3, name: "Ромашка", src: null },
     { id: 4, name: "Василек", src: null },
     { id: 5, name: "Курочка", src: null },
-    { id: 6, name: "Бильбо1000", src: null },
+    { id: 6, name: "Бильбо1000", src: b1000 },
   ],
   messages: [
     { id: 1, message: "Hi" },

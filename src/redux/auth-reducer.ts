@@ -1,6 +1,8 @@
-import { actions } from "./constans";
 import { authAPI, securityAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
+
+const SET_USER_DATA = "samurai-network/auth/SET-USER-DATA";
+const GET_CAPTCHA_URL_SUCCESS = "samurai-network/auth/GET-CAPTCHA-URL-SUCCESS";
 
 type initialStateType = {
   userId: number | null;
@@ -18,14 +20,18 @@ let initialState: initialStateType = {
   captchaUrl: null,
 };
 
-const authReducer = (state = initialState, action: any): initialStateType => {
+type ActionsType = setAuthUserDataActionType | getCaptchaUrlSuccessActionType;
+
+const authReducer = (
+  state = initialState,
+  action: ActionsType
+): initialStateType => {
   switch (action.type) {
-    case actions.SET_USER_DATA:
-    case actions.GET_CAPTCHA_URL_SUCCESS:
+    case SET_USER_DATA:
+    case GET_CAPTCHA_URL_SUCCESS:
       return {
         ...state,
         ...action.payload,
-        // Косяк       userId: "name",
       };
 
     default:
@@ -41,29 +47,27 @@ type setAuthUserDataActionPayloadType = {
 };
 
 type setAuthUserDataActionType = {
-  type: typeof actions.SET_USER_DATA;
+  type: typeof SET_USER_DATA;
   payload: setAuthUserDataActionPayloadType;
 };
-
 export const setAuthUserData = (
   userId: number | null,
   email: string | null,
   login: string | null,
   isAuth: boolean
 ): setAuthUserDataActionType => ({
-  type: actions.SET_USER_DATA,
+  type: SET_USER_DATA,
   payload: { userId, email, login, isAuth },
 });
 
 type getCaptchaUrlSuccessActionType = {
-  type: typeof actions.GET_CAPTCHA_URL_SUCCESS;
+  type: typeof GET_CAPTCHA_URL_SUCCESS;
   payload: { captchaUrl: string };
 };
-
 export const getCaptchaUrlSuccess = (
   captchaUrl: string
 ): getCaptchaUrlSuccessActionType => ({
-  type: actions.GET_CAPTCHA_URL_SUCCESS,
+  type: GET_CAPTCHA_URL_SUCCESS,
   payload: { captchaUrl },
 });
 

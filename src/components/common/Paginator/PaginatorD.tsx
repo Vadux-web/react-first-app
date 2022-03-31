@@ -1,4 +1,3 @@
-// @ts-ignore
 import styles from "../Paginator/PaginatorD.module.css";
 import React, { useState } from "react";
 import cn from "classnames";
