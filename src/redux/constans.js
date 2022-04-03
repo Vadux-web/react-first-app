@@ -1,4 +1,0 @@
-export const actions = {
-  SEND_MESSAGE: "SEND-MESSAGE",
-  UPDATE_NEW_MESSAGE_BODY: "UPDATE-NEW-MESSAGE-BODY",
-};

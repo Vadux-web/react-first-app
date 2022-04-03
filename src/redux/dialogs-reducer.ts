@@ -1,7 +1,9 @@
-import { actions } from "./constans";
 import lokus from "../assets/images/avatars/lokus.jpg";
 import bronti from "../assets/images/avatars/bronti.jpeg";
 import b1000 from "../assets/images/avatars/b1000.jpeg";
+
+const SEND_MESSAGE = "SEND-MESSAGE";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
 
 type DialogType = { id: number; name: string; src: string | null }; //HTMLImageElement
 
@@ -13,6 +15,7 @@ type MessageType = {
 type InitialStateType = {
   dialogs: Array<DialogType>;
   messages: Array<MessageType>;
+  newMessageBody?: string;
 };
 
 let initialState: InitialStateType = {
@@ -35,14 +38,13 @@ let initialState: InitialStateType = {
 
 const dialogsReducer = (
   state = initialState,
-  action: any
+  action: ActionsTypes
 ): InitialStateType => {
   switch (action.type) {
-    case actions.UPDATE_NEW_MESSAGE_BODY:
-      // @ts-ignore
+    case UPDATE_NEW_MESSAGE_BODY:
       return { ...state, newMessageBody: action.body };
 
-    case actions.SEND_MESSAGE:
+    case SEND_MESSAGE:
       let body = action.newMessageBody;
       return {
         ...state,
@@ -53,27 +55,31 @@ const dialogsReducer = (
   }
 };
 
+type ActionsTypes =
+  | SendMessageCreatorActionType
+  | UpdateNewMessageBodyCreatorActionType;
+
 type SendMessageCreatorActionType = {
-  type: typeof actions.SEND_MESSAGE;
+  type: typeof SEND_MESSAGE;
   newMessageBody: string;
 };
 
 export const sendMessageCreator = (
   newMessageBody: string
 ): SendMessageCreatorActionType => ({
-  type: actions.SEND_MESSAGE,
+  type: SEND_MESSAGE,
   newMessageBody,
 });
 
 type UpdateNewMessageBodyCreatorActionType = {
-  type: typeof actions.UPDATE_NEW_MESSAGE_BODY;
+  type: typeof UPDATE_NEW_MESSAGE_BODY;
   body: string;
 };
 
 export const updateNewMessageBodyCreator = (
   body
 ): UpdateNewMessageBodyCreatorActionType => ({
-  type: actions.UPDATE_NEW_MESSAGE_BODY,
+  type: UPDATE_NEW_MESSAGE_BODY,
   body: body,
 });
 
