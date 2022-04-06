@@ -19,7 +19,7 @@ type initialStateType = {
   captchaUrl: string | null;
 };
 
-let initialState: initialStateType = {
+const initialState: initialStateType = {
   userId: null,
   email: null,
   login: null,
@@ -87,9 +87,9 @@ type ThunkType = ThunkAction<
 >;
 
 export const getAuthUserData = (): ThunkType => async (dispatch) => {
-  let meData = await authAPI.me();
+  const meData = await authAPI.me();
   if (meData.resultCode === ResultCodesEnum.Success) {
-    let { id, email, login } = meData.data;
+    const { id, email, login } = meData.data;
     dispatch(setAuthUserData(id, email, login, true));
   }
 };
@@ -100,14 +100,14 @@ export const login = (
   rememberMe: boolean,
   captcha: string
 ) => async (dispatch) => {
-  let loginData = await authAPI.login(email, password, rememberMe, captcha);
+  const loginData = await authAPI.login(email, password, rememberMe, captcha);
   if (loginData.resultCode === ResultCodesEnum.Success) {
     await dispatch(getAuthUserData());
   } else {
     if (loginData.resultCode === ResultCodesForCaptchaEnum.CaptchaIsRequired) {
       await dispatch(getCaptchaUrl());
     }
-    let message =
+    const message =
       loginData.messages.length > 0 ? loginData.messages[0] : "Some error";
     dispatch(stopSubmit("login", { _error: message }));
   }
@@ -120,7 +120,7 @@ export const getCaptchaUrl = (): ThunkType => async (dispatch) => {
 };
 
 export const logout = (): ThunkType => async (dispatch) => {
-  let response = await authAPI.logout();
+  const response = await authAPI.logout();
   if (response.data.resultCode === 0) {
     dispatch(setAuthUserData(null, null, null, false));
   }

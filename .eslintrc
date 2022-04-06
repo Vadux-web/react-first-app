@@ -2,9 +2,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
-  ],
-  "rules": {
-    "@typescript-eslint/ban-ts-ignore": "warn",
-    "@typescript-eslint/no-explicit-any": "warn"
-  }
+  ]
+//  "rules": {
+//    "@typescript-eslint/ban-ts-ignore": "warn"
+//    "@typescript-eslint/no-explicit-any": "warn"
+//  }
 }
