@@ -53,11 +53,11 @@ const AddMessageForm = (props) => {
         <button>Send Message</button>
       </div>
     </form>
-  );
-};
+  )
+}
 
 const AddMessageFormRedux = reduxForm({ form: "dialogAddMessageForm" })(
   AddMessageForm
-);
+)
 
-export default Dialogs;
+export default Dialogs

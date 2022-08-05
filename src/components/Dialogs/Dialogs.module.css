@@ -12,10 +12,28 @@
     color: white;
 }
 
+.dialog {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.ava {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-right: 8px;
+    object-fit: cover;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
 .messages {
     padding: 10px;
-
-
 }
 
 .messages .message {
